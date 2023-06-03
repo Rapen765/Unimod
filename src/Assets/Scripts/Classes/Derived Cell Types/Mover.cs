@@ -6,15 +6,15 @@ public class Mover : TrackedCell
 {
     public override void Step()
     {
-        this.Push(this.getDirection(), 0);
+        this.Push(this.getDirection(), 0, false);
         //Suppressed will get set to true so we have to reset it.
         this.suppresed = false;
     }
 
-    public override (bool, bool) Push(Direction_e dir, int bias)
+    public override (bool, bool) Push(Direction_e dir, int bias, bool pulled)
     {
         if(this.suppresed)
-            return base.Push(dir, bias);
+            return base.Push(dir, bias, pulled);
         if (this.getDirection() == dir)
         {
             bias += 1;
@@ -25,6 +25,6 @@ public class Mover : TrackedCell
             bias -= 1;
         }
 
-        return base.Push(dir, bias);
+        return base.Push(dir, bias, pulled);
     }
 }

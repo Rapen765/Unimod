@@ -53,9 +53,9 @@ public class TrackedCell : Cell
         return 0;
     }
 
-    public override (bool, bool) Push(Direction_e dir, int bias)
-    {
-        (bool, bool) pushResult = base.Push(dir, bias);
+    public override (bool, bool) Push(Direction_e dir, int bias, bool pulled)
+    {   
+        (bool, bool) pushResult = base.Push(dir, bias, pulled);
         if (pushResult.Item1 && !pushResult.Item2) {
             if ((dir == this.getDirection() || dir == (Direction_e)(((int)this.getDirection() + 2) % 4))  && !deleted) {
                 this.queueForPositionSorting();

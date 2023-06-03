@@ -11,5 +11,6 @@
     DRAG,
     PLACEMENT,
     SELECT,
-    FLIPPER
+    FLIPPER,
+    PULLER
 }

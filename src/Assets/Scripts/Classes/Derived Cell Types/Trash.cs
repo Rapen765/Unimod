@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Trash : Cell
 {
-    public override (bool, bool) Push(Direction_e dir, int bias)
+    public override (bool, bool) Push(Direction_e dir, int bias, bool pulled)
     {
         if (bias > 0)
         {

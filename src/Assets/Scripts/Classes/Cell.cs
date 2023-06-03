@@ -80,7 +80,11 @@ public class Cell : MonoBehaviour
 
     //Called when attempting to move.
     // the first bool is weather the cell can move, the second is weather it gets destroyed by moving
-    public virtual (bool, bool) Push(Direction_e dir, int bias) {
+    public virtual (bool, bool) Push(Direction_e dir, int bias, bool pulled) {
+        if (pulled)
+        {
+            this.suppresed = true;
+        }
         int targetX = (int)position.x;
         int targetY = (int)position.y;
 
@@ -103,28 +107,34 @@ public class Cell : MonoBehaviour
             return (false, false);
         if (targetX < 0 || targetY < 0)
             return (false, false);
-
+        
+        
         if (bias < 1) return (false, false);
+        
+            if (CellFunctions.cellGrid[targetX, targetY] == null)
+            {
+                this.setPosition(targetX, targetY);
+                return (true, false);
+            } 
+        (bool, bool) pushResult = CellFunctions.cellGrid[targetX, targetY].Push(dir, bias, pulled);
+        
+            //if its a cell that deletes other cells
+            if (pushResult.Item2)
+            {
+                this.Delete(this.generated);
+                return (true, false);
+            }
 
-        if (CellFunctions.cellGrid[targetX, targetY] == null)
-        {
-            this.setPosition(targetX, targetY);
-            return (true, false);
-        }
-        (bool, bool) pushResult = CellFunctions.cellGrid[targetX, targetY].Push(dir, bias);
-        //if its a cell that deletes other cells
-        if (pushResult.Item2)
-        {
-            this.Delete(this.generated);
-            return (true, false);
-        }
-        if (pushResult.Item1)
-        {
-            this.setPosition(targetX, targetY);
-            return (true, false);
-        }
+            if (pushResult.Item1)
+            {
+                this.setPosition(targetX, targetY);
+                return (true, false);
+            }
+        
         return (false, false);
     }
+    
+
 
     public virtual void FaceDirection(Direction_e dir)
     {

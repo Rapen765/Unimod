@@ -8,5 +8,6 @@
     WALL,
     ENEMY,
     TRASH,
-    FLIPPER
+    FLIPPER,
+    PULLER
 }
