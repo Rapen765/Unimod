@@ -7,5 +7,6 @@
     BLOCK,
     WALL,
     ENEMY,
-    TRASH
+    TRASH,
+    FLIPPER
 }

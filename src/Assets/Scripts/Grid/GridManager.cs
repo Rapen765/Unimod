@@ -169,6 +169,7 @@ public class GridManager : MonoBehaviour
     }
 
     public Cell SpawnCell(CellType_e cellType, Vector2 position, Direction_e rotation, bool generated) {
+        if ((int)cellType > 11) { cellType = (CellType_e)((int)cellType - 3); }
         Cell cell = Instantiate(this.cellPrefabs[(int)cellType]).GetComponent<Cell>();
         cell.transform.position = new Vector3(position.x, position.y, 0);
         cell.Setup(position, rotation, generated);
