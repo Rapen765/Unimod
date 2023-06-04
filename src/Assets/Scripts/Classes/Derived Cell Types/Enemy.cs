@@ -18,7 +18,7 @@ public class Enemy : Cell
         base.Delete(destroy);
     }
 
-    public override (bool, bool) Push(Direction_e dir, int bias, bool pulled)
+    public override (bool, bool) Push(Direction_e dir, int bias)
     {
         if (bias < 1)
             return (false, false);

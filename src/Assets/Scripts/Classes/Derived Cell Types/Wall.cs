@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wall : Cell
 {
-    public override (bool, bool) Push(Direction_e dir, int bias, bool pulled)
+    public override (bool, bool) Push(Direction_e dir, int bias)
     {
         return (false, false);
     }

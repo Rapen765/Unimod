@@ -80,11 +80,8 @@ public class Cell : MonoBehaviour
 
     //Called when attempting to move.
     // the first bool is weather the cell can move, the second is weather it gets destroyed by moving
-    public virtual (bool, bool) Push(Direction_e dir, int bias, bool pulled) {
-        if (pulled)
-        {
-            this.suppresed = true;
-        }
+    public virtual (bool, bool) Push(Direction_e dir, int bias) {
+        
         int targetX = (int)position.x;
         int targetY = (int)position.y;
 
@@ -116,7 +113,7 @@ public class Cell : MonoBehaviour
                 this.setPosition(targetX, targetY);
                 return (true, false);
             } 
-        (bool, bool) pushResult = CellFunctions.cellGrid[targetX, targetY].Push(dir, bias, pulled);
+        (bool, bool) pushResult = CellFunctions.cellGrid[targetX, targetY].Push(dir, bias);
         
             //if its a cell that deletes other cells
             if (pushResult.Item2)

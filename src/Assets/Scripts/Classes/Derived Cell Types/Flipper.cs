@@ -44,10 +44,11 @@ public class Flipper : TickedCell
             rotateCell(offset[0], offset[1]);
         }
     }
-    public override (bool, bool) Push(Direction_e dir, int bias, bool pulled)
+    public override (bool, bool) Push(Direction_e dir, int bias)
     {
-        if(dir == this.getDirection() || ((int)dir + 2) % 4 == (int)this.getDirection())
-            return base.Push(dir, bias, pulled);
+        this.suppresed = false;
+        if (dir == this.getDirection() || ((int)dir + 2) % 4 == (int)this.getDirection())
+            return base.Push(dir, bias);
         return (false, false);
     }
 }
