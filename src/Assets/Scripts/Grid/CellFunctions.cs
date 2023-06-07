@@ -10,7 +10,7 @@ public static class CellFunctions
     //HARD CODED VARIABLES
     //HARD CODED VARIABLES
     public static Direction_e[] directionUpdateOrder = { Direction_e.RIGHT, Direction_e.LEFT, Direction_e.UP, Direction_e.DOWN };
-    public static CellType_e[] cellUpdateOrder = { CellType_e.GENERATOR, CellType_e.CWROTATER, CellType_e.CCWROTATER, CellType_e.FLIPPER, CellType_e.MOVER, CellType_e.PULLER};
+    public static CellType_e[] cellUpdateOrder = {CellType_e.TELEPORT,CellType_e.GENERATOR, CellType_e.CWROTATER, CellType_e.CCWROTATER, CellType_e.FLIPPER, CellType_e.MOVER, CellType_e.PULLER};
     public static Dictionary<CellType_e, CellUpdateType_e> cellUpdateTypeDictionary = new Dictionary<CellType_e, CellUpdateType_e>
     {
         [CellType_e.GENERATOR] = CellUpdateType_e.TRACKED,
@@ -24,6 +24,7 @@ public static class CellFunctions
         [CellType_e.TRASH] = CellUpdateType_e.BASE,
         [CellType_e.FLIPPER] = CellUpdateType_e.TICKED,
         [CellType_e.PULLER] = CellUpdateType_e.TRACKED,
+        [CellType_e.TELEPORT] = CellUpdateType_e.TRACKED
     };
     //HARD CODED VARIABLES
     //HARD CODED VARIABLES

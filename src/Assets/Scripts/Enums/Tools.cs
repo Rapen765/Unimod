@@ -12,5 +12,6 @@
     PLACEMENT,
     SELECT,
     FLIPPER,
-    PULLER
+    PULLER,
+    TELEPORT
 }

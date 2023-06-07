@@ -9,5 +9,6 @@
     ENEMY,
     TRASH,
     FLIPPER,
-    PULLER
+    PULLER,
+    TELEPORT
 }
